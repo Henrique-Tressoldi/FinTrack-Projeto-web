@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FinTrack — Categorias</title>
+  <meta name="description" content="Gerencie as categorias de suas transações financeiras. Crie, edite e organize suas categorias.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ====== Sidebar ====== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">
+        <span class="logo-icon">💰</span>
+        <h1 class="logo-text">FinTrack</h1>
+      </div>
+      <button class="sidebar-close" id="sidebarClose" aria-label="Fechar menu">&times;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html" class="nav-link" id="nav-dashboard">
+        <span class="nav-icon">📊</span>
+        <span class="nav-text">Dashboard</span>
+      </a>
+      <a href="transacoes.html" class="nav-link" id="nav-transacoes">
+        <span class="nav-icon">💸</span>
+        <span class="nav-text">Transações</span>
+      </a>
+      <a href="categorias.html" class="nav-link active" id="nav-categorias">
+        <span class="nav-icon">🏷️</span>
+        <span class="nav-text">Categorias</span>
+      </a>
+    </nav>
+  </aside>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ====== Main Content ====== -->
+  <main class="main-content">
+    <header class="top-header">
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">☰</button>
+      <h2 class="page-title">Categorias</h2>
+    </header>
+
+    <div class="page-content fade-in">
+
+      <div class="section-header">
+        <h3 class="section-title">Gerenciar Categorias</h3>
+        <button class="btn btn-primary" id="btnAddCategory">
+          <span>＋</span> Nova Categoria
+        </button>
+      </div>
+
+      <!-- Filtro por tipo -->
+      <div class="filter-bar" role="search" aria-label="Filtros de categorias">
+        <select class="form-select" id="filterCatType" style="max-width: 200px;" aria-label="Filtrar por tipo">
+          <option value="todas">Todos os tipos</option>
+          <option value="receita">Receita</option>
+          <option value="despesa">Despesa</option>
+        </select>
+      </div>
+
+      <!-- Grid de Categorias -->
+      <div id="categoryGrid" class="category-grid"></div>
+
+    </div>
+  </main>
+
+  <!-- ====== Modal: Adicionar/Editar Categoria ====== -->
+  <div class="modal-overlay" id="categoryModal" role="dialog" aria-modal="true" aria-labelledby="categoryModalTitle">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title" id="categoryModalTitle">Nova Categoria</h3>
+        <button class="modal-close" aria-label="Fechar">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="categoryForm" novalidate>
+          <input type="hidden" id="categoryId">
+
+          <div class="form-group">
+            <label class="form-label" for="catName">Nome</label>
+            <input type="text" class="form-input" id="catName" placeholder="Nome da categoria" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="catType">Tipo</label>
+            <select class="form-select" id="catType" required>
+              <option value="receita">Receita</option>
+              <option value="despesa">Despesa</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Cor</label>
+            <div class="color-picker-grid" id="colorPicker"></div>
+            <input type="hidden" id="catColor" required>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-secondary modal-close">Cancelar</button>
+            <button type="submit" class="btn btn-primary" id="btnSaveCategory">Salvar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/storage.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/categorias.js"></script>
+</body>
+</html>

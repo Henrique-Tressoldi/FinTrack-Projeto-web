@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FinTrack — Dashboard</title>
+  <meta name="description" content="FinTrack - Gerenciador Financeiro Pessoal. Acompanhe suas receitas e despesas de forma simples e visual.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ====== Sidebar ====== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">
+        <span class="logo-icon">💰</span>
+        <h1 class="logo-text">FinTrack</h1>
+      </div>
+      <button class="sidebar-close" id="sidebarClose" aria-label="Fechar menu">&times;</button>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html" class="nav-link active" id="nav-dashboard">
+        <span class="nav-icon">📊</span>
+        <span class="nav-text">Dashboard</span>
+      </a>
+      <a href="transacoes.html" class="nav-link" id="nav-transacoes">
+        <span class="nav-icon">💸</span>
+        <span class="nav-text">Transações</span>
+      </a>
+      <a href="categorias.html" class="nav-link" id="nav-categorias">
+        <span class="nav-icon">🏷️</span>
+        <span class="nav-text">Categorias</span>
+      </a>
+    </nav>
+  </aside>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- ====== Main Content ====== -->
+  <main class="main-content">
+    <header class="top-header">
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">☰</button>
+      <h2 class="page-title">Dashboard</h2>
+    </header>
+
+    <div class="page-content fade-in">
+
+      <!-- Summary Cards -->
+      <section aria-label="Resumo financeiro">
+        <div class="summary-grid" id="summaryGrid">
+          <div class="summary-card">
+            <div class="card-icon">💼</div>
+            <div class="card-label">Saldo Atual</div>
+            <div class="card-value" id="totalBalance">R$ 0,00</div>
+          </div>
+          <div class="summary-card income">
+            <div class="card-icon">📈</div>
+            <div class="card-label">Receitas</div>
+            <div class="card-value" id="totalIncome">R$ 0,00</div>
+          </div>
+          <div class="summary-card expense">
+            <div class="card-icon">📉</div>
+            <div class="card-label">Despesas</div>
+            <div class="card-value" id="totalExpense">R$ 0,00</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Monthly Chart -->
+      <section aria-label="Gráfico mensal">
+        <div class="section-header">
+          <h3 class="section-title">Visão Mensal</h3>
+        </div>
+        <div class="chart-container" id="monthlyChart">
+          <div class="chart-bars" id="chartBars"></div>
+          <div style="display: flex; justify-content: center; gap: 1.5rem; margin-top: 1rem;">
+            <span style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; color: var(--text-secondary);">
+              <span style="width: 10px; height: 10px; background: var(--income); border-radius: 2px; display: inline-block;"></span> Receitas
+            </span>
+            <span style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; color: var(--text-secondary);">
+              <span style="width: 10px; height: 10px; background: var(--expense); border-radius: 2px; display: inline-block;"></span> Despesas
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Recent Transactions -->
+      <section aria-label="Transações recentes" style="margin-top: 2rem;">
+        <div class="section-header">
+          <h3 class="section-title">Transações Recentes</h3>
+          <a href="transacoes.html" class="btn btn-secondary btn-sm" id="btnViewAll">Ver todas →</a>
+        </div>
+        <div id="recentTransactions">
+          <div class="empty-state">
+            <div class="empty-icon">📭</div>
+            <p class="empty-text">Nenhuma transação registrada</p>
+            <p class="empty-subtext">Adicione sua primeira transação na página de Transações.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script src="js/storage.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
